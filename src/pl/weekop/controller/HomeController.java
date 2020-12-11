@@ -20,7 +20,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         saveDiscoveriesInRequest(request);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
     }
 
     private void saveDiscoveriesInRequest(HttpServletRequest request) {
@@ -39,6 +39,9 @@ public class HomeController extends HttpServlet {
                 return 0;
             }
         });
+        //		sortowanie według czasu dodania
+        //		List<Discovery> allDiscoveries =
+        //			discoveryService.getAllDiscoveries((d1, d2) -> d2.getTimestamp().compareTo(d1.getTimestamp()));
         request.setAttribute("discoveries", allDiscoveries);
     }
 }
